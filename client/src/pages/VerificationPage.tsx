@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { api } from '../utils/api';
 import type { Certificate } from '../utils/api';
 import { ShieldCheck, Download, Share2, AlertCircle, RefreshCw, Loader2, CheckCircle2 } from 'lucide-react';
-import clsx from 'clsx';
+
 
 export default function VerificationPage() {
   const { certificateNumber } = useParams<{ certificateNumber: string }>();
