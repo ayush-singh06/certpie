@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Certificate {
+  id                  String   @id @default(uuid())
+  certificateNumber   String   @unique
+  recipientName       String
+  recipientId         String?
+  organizationName    String
+  organizationLogo    String?
+  certificateTitle    String
+  description         String?
+  dateOfIssue         DateTime
+  verificationDate    DateTime?
+  certificateImageUrl String?
+  certificatePdfUrl   String?
+  status              String   @default("verified") // e.g., "verified", "revoked"
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@map("certificates")
+}
