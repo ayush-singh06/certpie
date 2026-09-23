@@ -51,7 +51,22 @@ async function main() {
     },
   })
 
-  console.log({ cert1, cert2, cert3 })
+  const cert4 = await prisma.certificate.upsert({
+    where: { certificateNumber: 'CERT-XPIM-PQW4' },
+    update: {},
+    create: {
+      certificateNumber: 'CERT-XPIM-PQW4',
+      recipientName: 'ayush singh',
+      organizationName: 'connect4society',
+      certificateTitle: 'cert of participation',
+      dateOfIssue: new Date('2026-09-23'),
+      status: 'verified',
+      verificationDate: new Date('2026-09-23'),
+      certificateImageUrl: 'https://images.unsplash.com/photo-1596495578065-6e0763fa1178?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80',
+    },
+  })
+
+  console.log({ cert1, cert2, cert3, cert4 })
 }
 
 main()
